@@ -11,9 +11,11 @@ This program uses the free CoinMarketCap.com [api](https://coinmarketcap.com/api
   * [Python 3.6+](https://www.python.org/downloads/release/python-365/)
   * open a terminal and navigate to CryptoNotifier/install
     * `$ sh dependencies.sh`
-    * if this fails:
+    * if the dependencies script fails, try:
       * `$ sh retry.sh`
+    * if this also fails, see if you have pip or pip3 installed, if not [install it](https://stackoverflow.com/questions/6587507/how-to-install-pip-with-python-3)
 
+Clone this repo to download it.
 
 ###### How to use it
 1. open the coins.txt file, add the coins you want to recieve updates on.
@@ -53,20 +55,20 @@ This program uses the free CoinMarketCap.com [api](https://coinmarketcap.com/api
 
     Here's an example of a setup in settings.txt:
 
+    ```
     CAD
-
     daily
-
     30
+    ```
 
     This setup converts to Canadian dollars, uses the 24 hour price as a threshold,
     and scans coinmarketcap.com every 30 minutes.
 
 3. open terminal and navigate to the CryptoNotifier directory.
-  * python3 main.py
+  * `python3 main.py`
 
 ## Notes
-This tool isn't complete, I just wanted to put it up because basic alerts do work. The code is kind of sketchy but I haven't used python in a few months, I'll fix that and the documentation over the next few weeks.
+This tool isn't complete, I just wanted to put it up because basic alerts work. The code is kind of sketchy but I haven't used python in a few months, I'll fix that and the documentation over the next few weeks.
 
 feel free to donate if you'd like :)
 
