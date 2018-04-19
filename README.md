@@ -9,8 +9,7 @@ This program uses the free CoinMarketCap.com [api](https://coinmarketcap.com/api
 ## REQUIREMENTS
   * A Mac (this uses the MacOS notification center)
   * [Python 3.6+](https://www.python.org/downloads/release/python-365/)
-Clone this repo to download it then
-  * open a terminal and navigate to CryptoNotifier/install
+  * Clone this repo to download it then open a terminal and navigate to CryptoNotifier/install
     * `$ sh dependencies.sh`
     * if the dependencies script fails, try:
       * `$ sh retry.sh`
