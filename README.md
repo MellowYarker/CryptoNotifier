@@ -1,9 +1,9 @@
 # Crypto Notifier
-### A program that sends crypto price alerts via push notifications on Macs.
+### A program that displays crypto price alerts via push notifications on Macs.
 
 ![alt text](https://github.com/MellowYarker/CryptoNotifier/blob/master/images/grsExample.png "Example Notification")
 
-This program uses the free CoinMarketCap.com [api](https://coinmarketcap.com/api/), all data is pulled from there.
+This program uses the free CoinMarketCap.com [api](https://coinmarketcap.com/api/), if the coin you're looking for isn't there then there won't be data for it.
 
 
 ## REQUIREMENTS
@@ -61,14 +61,14 @@ Clone this repo to download it.
     30
     ```
 
-    This setup converts to Canadian dollars, uses the 24 hour price as a threshold,
+    This setup converts to Canadian dollars, watches the 24 hour price change,
     and scans coinmarketcap.com every 30 minutes.
 
 3. open terminal and navigate to the CryptoNotifier directory.
   * `python3 main.py`
 
 ## Notes
-This tool isn't complete, I just wanted to put it up because basic alerts work. The code is kind of sketchy but I haven't used python in a few months, I'll fix that and the documentation over the next few weeks.
+This tool isn't complete, I just wanted to put it up because basic alerts work. The code and documentation need work but it's pretty extendible so that's good.
 
 feel free to donate if you'd like :)
 
