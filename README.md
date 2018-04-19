@@ -9,25 +9,25 @@ This program uses the free CoinMarketCap.com [api](https://coinmarketcap.com/api
 ## REQUIREMENTS
   * A Mac (this uses the MacOS notification center)
   * [Python 3.6+](https://www.python.org/downloads/release/python-365/)
+Clone this repo to download it then
   * open a terminal and navigate to CryptoNotifier/install
     * `$ sh dependencies.sh`
     * if the dependencies script fails, try:
       * `$ sh retry.sh`
     * if this also fails, see if you have pip or pip3 installed, if not [install it](https://stackoverflow.com/questions/6587507/how-to-install-pip-with-python-3)
 
-Clone this repo to download it.
 
-###### How to use it
-1. open the coins.txt file, add the coins you want to recieve updates on.
 
-   syntax for this file is as follows:
+##### Instructions
+1. Open coins.txt file,
+    * Add the coins you want to recieve updates on, syntax for this file is as follows:
 
       coin ID, coin symbol, volume percentage change, price percentage change
 
       ex: bitcoin, BTC, 5, 5
 
    Volume analysis is being built still. If the price change is 5, it means (+/-) 5%
-     * The option to have individual increase and decrease thresholds is being built.
+     * **(note)** The option to have individual increase and decrease thresholds is being built.
 
 2. open settings.txt
 
@@ -75,5 +75,7 @@ feel free to donate if you'd like :)
 BTC: 12czBbxm5teNqo26tB9EFYs2U6tfajDQqD
 
 GRS: FoCWRhe5CTJJwBPjtKy939ACB4S7ymU27Z
+
+XLM: GAY7TEP5OCGHB37RBE3KJIYRQO7FPSL5GZRE6VIBZVXKOPQOFDEUB2W4
 
 
