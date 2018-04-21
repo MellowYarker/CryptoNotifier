@@ -22,15 +22,14 @@ class Notification:
         self.title = "ALERT"
         self.message = ""
 
-    def action(self, change):
+    def notify(self):
         """
-        Returns:
-            - a string based on the movement of an asset.
+        Displays the notification.
+
         """
-        if change > 0:
-            return "risen"
-        else:
-            return "fallen"
+        os.system(
+            """osascript -e 'display notification "{}" with title "{}"'""".
+            format(self.message, self.title))
 
 
 class PriceNotification(Notification):
@@ -76,6 +75,16 @@ class PriceNotification(Notification):
                 "{id} ({symbol}) has {change} by {amount}% in the last week! " +
                 "Current price is {price} {fiat}")
 
+    def action(self, change):
+        """
+        Returns:
+            - a string based on the movement of an asset.
+        """
+        if change > 0:
+            return "risen"
+        else:
+            return "fallen"
+
     def build_message(self, msg):
         """
         Helps with message construction.
@@ -94,14 +103,60 @@ class PriceNotification(Notification):
                           price=format(self.asset.price, '.2f'),
                           fiat=str(self.asset.fiat))
 
-    def notify(self):
+    # def notify(self):
+    #     """
+    #     Displays the notification.
+    #
+    #     """
+    #     os.system(
+    #         """osascript -e 'display notification "{}" with title "{}"'""".\
+    #         format(self.message, self.title))
+
+
+class TradeNotification(Notification):
+    """
+    A notification representing a buying opporunity for an asset.
+
+    Args:
+        asset: (coin.Coin): A Coin object.
+
+    Attributes:
+        asset (coin.Coin): A Coin object.
+        title (str): This TradeNotification's title.
+        message (str): This TradeNotification's message.
+    """
+    def __init__(self, asset):
         """
-        Displays the notification.
+        Creates a new TradeNotification
 
         """
-        os.system(
-            """osascript -e 'display notification "{}" with title "{}"'""".\
-            format(self.message, self.title))
+        Notification.__init__(self, asset)
+
+    def set_message(self):
+        """
+        Build the message for this TradeNotification based on if an asset should
+        be bought or sold at the current price.
+
+        Returns:
+            None
+        """
+
+        if self.asset.buy_notifiaction():
+            self.message = self.help_build("BUY ALERT: {id} ({symbol}) is worth"
+                                           " {price} {fiat}!")
+        elif self.asset.buy_notifiaction():
+            self.message = self.help_build("SELL ALERT: {id} ({symbol}) is "
+                                           "worth {price} {fiat}!")
+
+    def help_build(self,  msg):
+        """
+        Helps build the message.
+
+        """
+        return msg.format(id=self.asset.id,
+                          symbol=self.asset.symbol,
+                          price=self.asset.price,
+                          fiat=self.asset.fiat)
 
 
 class VolumeNotification(Notification):

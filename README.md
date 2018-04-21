@@ -21,12 +21,13 @@ This program uses the free CoinMarketCap.com [api](https://coinmarketcap.com/api
 1. Open coins.txt file,
     * Add the coins you want to recieve updates on, syntax for this file is as follows:
 
-      coin ID, coin symbol, volume percentage change, price percentage change
+      coin ID, coin symbol, buy price, price percentage change
 
-      ex: bitcoin, BTC, 5, 5
+      ex: bitcoin, BTC, 8000, 5
 
-   Volume analysis is being built still. If the price change is 5, it means (+/-) 5%
+   If the price change is 5, it means (+/-) 5%
      * **(note)** The option to have individual increase and decrease thresholds is being built.
+   Assume we want everything relative to the Canadian dollar (CAD) (**this is determined in the settings file**), according to the chosen buy price, if bitcoin is worth $8000 CAD there will be a buy alert.
 
 2. open settings.txt
 

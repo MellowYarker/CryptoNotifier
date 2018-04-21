@@ -35,8 +35,8 @@ class Bot:
         """
         Return:
             returns coin.Coin with id id, if it exists.
-
-        >>> btc = coin.Coin("bitcoin", "BTC", 5, 10)
+        >>> import coin
+        >>> btc = coin.Coin("bitcoin", "BTC", 8000, 10)
         >>> b = Bot([btc])
         >>> passes = b.get_coin_with_id("bitcoin")
         >>> passes.symbol

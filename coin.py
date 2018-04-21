@@ -15,10 +15,9 @@ class Coin:
     Attributes:
         id (str): The id of the Coin. Ex bitcoin, ethereum.
         symbol (str): The symbol of the Coin. Ex: BTC, ETH.
-        volume_alert (float): the % change in volume in a set time period that
-            results in an alert.
+        buy_price (float): The price at which a Coin is worth buying.
         price_alert (float): The % change in price in a set time period that
-            results in an alert.
+            results in an price_alert.
         hour_change (float): The % change in the price of this Coin in the last
             hour of trading.
         day_change (float): The % change in the price of this Coin in the last
@@ -30,22 +29,21 @@ class Coin:
 
     """
 
-    def __init__(self, id, symbol, vol_alert, price_alert):
+    def __init__(self, id, symbol, buy_alert, price_alert):
         """
         Creates a new Coin object.
 
         Args:
             id (str): The id of this Coin.
             symbol(str) : The symbol of this Coin.
-            vol_alert (float): The % change in volume in a set time period that
-                results in an alert.
+            buy_alert (float): The price at which a Coin is worth buying.
             price_alert (float): The % change in price in a set time period that
-                results in an alert.
+                results in an price_alert.
         """
         self.id = id
         self.symbol = symbol
-        self.volume_alert = vol_alert
-        self.price_alert = price_alert
+        self.buy_price = buy_alert
+        self.price_change_alert = price_alert
         self.time_frame = ""
         self.change = 0
         # TODO: hour and day and week change(s) will be irrelevant soon
@@ -63,12 +61,6 @@ class Coin:
             self.fiat = str(ret[0])
             if ret[1] == "hourly" or ret[1] == "daily" or ret[1] == "weekly":
                 self.time_frame = ret[1]
-            # if ret[1] == "hourly":
-            #     self.time_frame = 0
-            # elif ret[1] == "daily":
-            #     self.time_frame = 1
-            # elif ret[1] == "weekly":
-            #     self.time_frame = 2
             else:
                 raise ValueError("settings.txt line 2 must be one of " +
                                  "(hourly, daily, weekly)! Defaulting to daily"
@@ -127,17 +119,17 @@ class Coin:
         :return:
         :rtype:
         """
-        self.volume_alert = value
+        self.buy_price = value
 
-    def get_vol(self):
+    def get_buy_price(self):
         """
 
         :return:
         :rtype:
         """
-        return self.volume_alert
+        return self.buy_price
 
-    def set_price_alert(self, value):
+    def set_price_change_alert(self, value):
         """
 
         :param value:
@@ -145,15 +137,15 @@ class Coin:
         :return:
         :rtype:
         """
-        self.price_alert = value
+        self.price_change_alert = value
 
-    def get_price_alert(self):
+    def get_price_change_alert(self):
         """
 
         :return:
         :rtype:
         """
-        return self.price_alert
+        return self.price_change_alert
 
     def has_id(self, id):
         """
@@ -171,22 +163,48 @@ class Coin:
         """
         if type(self) == type(other):
             return self.id == other.id and self.symbol == other.symbol and \
-                   self.volume_alert == other.volume_alert and \
-                   self.price_alert == other.price_alert
+                   self.buy_price == other.buy_price and \
+                   self.price_change_alert == other.price_change_alert
 
+    # TODO: refactor this method once individual increase/decrease options exist
     def price_notification(self):
         """
-        Return True if a notification must be sent.
-        :return:
-        :rtype:
+        Determins whether an increase, decrease, or no price price_alert should be
+        made.
+
+        Returns:
+            1 if a price increased at least the price_alert amount
+            -1 if a price decreaed at least the price_alert amount
+            0 otherwise.
+
         """
         if self.change != 0:
-            # price_alert if above positive threshold
-            if self.change > 0 and self.price_alert > 0:
-                if self.price_alert <= self.change:
+            # price_change_alert if above positive threshold
+            if self.change > 0 and self.price_change_alert > 0:
+                if self.price_change_alert <= self.change:
                     return 1
-            # price_alert if below negative threshold
-            elif self.change < 0 and self.price_alert*-1 < 0:
-                if -1 * self.price_alert >= self.change:
+            # price_change_alert if below negative threshold
+            elif self.change < 0 and self.price_change_alert*-1 < 0:
+                if -1 * self.price_change_alert >= self.change:
                     return -1
         return 0
+
+    def buy_notifiaction(self):
+        """
+        Determine if a buy alert should be triggered. Takes priority over price
+        change.
+
+        Returns:
+            True if a buy  should be triggered and False otherwise
+        """
+        return self.buy_price >= self.price
+
+    def sell_notification(self):
+        """
+        Determine if a sell alert should be triggered. Takes priority over price
+        change.
+
+        Returns:
+            True if a sell alert should be triggered and False otherwise.
+        """
+        pass
