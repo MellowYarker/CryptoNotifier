@@ -11,14 +11,14 @@ import certifi
 # TODO: read JSON data, determine how long to hold data in a pickle file (and how to delete)
 
 
-class Bot:
-    """ A bot that connects to the CoinMarketCap API.
+class Scraper:
+    """ A web scraper that connects to the CoinMarketCap API.
 
     Args:
         coins (List(Obj)): A list of coin.Coin objects.
     Attributes:
         coins (List(Obj)): A list of coin.Coin objects.
-        time (int): The time the bot retrived the data. (not implemented)
+        time (int): The time the scrape retrived the data. (not implemented)
         link (str): The coinmarketcap api link.
         http (obj): A urllib3 object.
     """
@@ -37,7 +37,7 @@ class Bot:
             returns coin.Coin with id id, if it exists.
         >>> import coin
         >>> btc = coin.Coin("bitcoin", "BTC", 8000, 10)
-        >>> b = Bot([btc])
+        >>> b = Scraper([btc])
         >>> passes = b.get_coin_with_id("bitcoin")
         >>> passes.symbol
         'BTC'
@@ -63,7 +63,7 @@ class Bot:
     def print_coins(self):
         """
         Returns:
-            a string of the _coins this bot searches for.
+            a string of the _coins this scrape searches for.
 
         """
         coins = self.coins
@@ -128,6 +128,6 @@ class Bot:
 if __name__ == "__main__":
     with open("coinList.pickle", "rb") as f:
         coins = pickle.load(f)
-    test = Bot(coins)
+    test = Scraper(coins)
     for coin in coins:
         print(test.request_coin(coin.id))

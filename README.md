@@ -49,7 +49,7 @@ This program uses the free CoinMarketCap.com [api](https://coinmarketcap.com/api
 
             - you can only choose one (for now)
 
-        - how often you want the bot to scan CMC
+        - how often you want the scraper to scan CMC
 
             - this is an integer, ex. 10 = 10 minutes
 

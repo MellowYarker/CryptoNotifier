@@ -4,7 +4,7 @@ Where the program is run.
 
 """
 import collect
-from request import Bot
+from request import Scraper
 import time
 import pickle
 from notifications.Notification import PriceNotification, TradeNotification
@@ -19,9 +19,9 @@ if __name__ == "__main__":
         with open("coinList.pickle", "rb") as f:
             coins = pickle.load(f)
         # Request data for each coin
-        bot = Bot(coins)
-        for coin in bot.coins:
-            result = bot.request_coin(coin.id)
+        scrape = Scraper(coins)
+        for coin in scrape.coins:
+            result = scrape.request_coin(coin.id)
             parser.parse(coin, result)
 
             # Alerts!
@@ -41,11 +41,10 @@ if __name__ == "__main__":
                 noti = PriceNotification(coin, price_alert)
                 noti.set_message()
                 alerts.append(noti)
-                # noti.notify()
                 # time between notifications
             for alert in alerts:
                 alert.notify()
                 time.sleep(5)
             alerts = []
 
-        time.sleep(bot.update_frequency())
+        time.sleep(scrape.update_frequency())
