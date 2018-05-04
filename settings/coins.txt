@@ -1,4 +1,4 @@
-bitcoin, BTC, 12000, 1
+bitcoin, BTC, 8500, 7
 groestlcoin, GRS, 1.2, 10
 encrypgen, DNA, 0.22, 10
 canada-ecoin, CDN, 0.01, 20

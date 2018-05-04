@@ -25,9 +25,10 @@ if __name__ == "__main__":
             parser.parse(coin, result)
 
             # Alerts!
-            # TODO: CREATE A LIST OF ALERTS AND TRIGGER ALL THOSE AT ONCE
+            # this is a list of all alerts for this coin
             alerts = []
-            buy_alert = coin.buy_notifiaction()
+            buy_alert = coin.buy_notification()
+            # TODO: Build sell notification in Coin class
             sell_alert = coin.sell_notification()
 
             if buy_alert or sell_alert:
@@ -41,9 +42,9 @@ if __name__ == "__main__":
                 noti = PriceNotification(coin, price_alert)
                 noti.set_message()
                 alerts.append(noti)
-                # time between notifications
             for alert in alerts:
                 alert.notify()
+                # time between notifications
                 time.sleep(5)
             alerts = []
 

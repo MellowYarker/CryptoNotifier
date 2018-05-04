@@ -1,5 +1,5 @@
 """
-Parses coins.txt and settings.txt
+Parses settings/coins.txt
 
 """
 from coin import Coin
@@ -9,20 +9,18 @@ import pickle
 def rebuild():
     """
     Returns:
-        True if either the coins.txt or settings.txt file has been modified,
-        False if neither has been modified.
+        True if either settings/coins.txt has been modified or coinList.pickle
+            doesn't exist.
+        False otherwise.
 
     """
-    # build a list of Coin objects from the coins.txt.txt file
-    coins = create_coins("coins.txt")
+    # build a list of Coin objects from the coins.txt file
+    coins = create_coins("settings/coins.txt")
 
     try:
         with open("coinList.pickle", "rb") as p:
             p = pickle.load(p)
-        with open("settings.txt", "r") as s:
-            s = s.read().split("\n")
-        return coins != p or p[0].fiat != s[0] or p[1].time_frame != s[1]\
-            or p[2].update // 60 != int(s[2])
+        return coins != p
     except FileNotFoundError:
         return True
 
@@ -42,8 +40,8 @@ def create_coins(file):
                 coins.append(
                     Coin(coin[0], coin[1], float(coin[2]), float(coin[3][:-1])))
             except ValueError:
-                raise ValueError("Please check coins.txt to make sure the " +
-                                 "document is formatted correctly.")
+                raise ValueError("Please check settings/coins.txt to make sure"
+                                 " the document is formatted correctly.")
     return coins
 
 
@@ -54,7 +52,7 @@ def run():
 
     """
     if rebuild():
-        coins = create_coins("coins.txt")
+        coins = create_coins("settings/coins.txt")
 
         with open('coinList.pickle', 'wb') as file:
             pickle.dump(coins, file)

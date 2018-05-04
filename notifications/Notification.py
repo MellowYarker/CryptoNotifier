@@ -2,6 +2,7 @@
 The notification class.
 """
 import os
+from settings.settings import Settings
 
 
 class Notification:
@@ -21,6 +22,7 @@ class Notification:
         self.asset = asset
         self.title = "ALERT"
         self.message = ""
+        self.settings = Settings()
 
     def notify(self):
         """
@@ -59,19 +61,19 @@ class PriceNotification(Notification):
         price action of this asset.
 
         """
-        if self.asset.time_frame == "hourly":
-            self.message = self.build_message("{id} ({symbol}) has "
-                                              "{change} by {amount}% "
-                                              "in the last hour! Current "
-                                              "price is {price} {fiat}")
-        elif self.asset.time_frame == "daily":
-            self.message = self.build_message("{id} ({symbol}) has {change} "
-                                              "by {amount}% in the last 24 "
-                                              "hours! Current price is "
-                                              "{price} {fiat}")
+        if self.settings.time_frame == "hourly":
+            self.message = self.help_build("{id} ({symbol}) has "
+                                           "{change} by {amount}% "
+                                           "in the last hour! Current "
+                                           "price is {price} {fiat}")
+        elif self.settings.time_frame == "daily":
+            self.message = self.help_build("{id} ({symbol}) has {change} "
+                                           "by {amount}% in the last 24 "
+                                           "hours! Current price is "
+                                           "{price} {fiat}")
 
-        elif self.asset.time_frame == "weekly":
-            self.message = self.build_message(
+        elif self.settings.time_frame == "weekly":
+            self.message = self.help_build(
                 "{id} ({symbol}) has {change} by {amount}% in the last week! " +
                 "Current price is {price} {fiat}")
 
@@ -85,9 +87,9 @@ class PriceNotification(Notification):
         else:
             return "fallen"
 
-    def build_message(self, msg):
+    def help_build(self, msg):
         """
-        Helps with message construction.
+        Helps build the message.
 
         Args:
             msg (str): the message that needs to be formatted
@@ -101,7 +103,7 @@ class PriceNotification(Notification):
                           change=self.action(self.change),
                           amount=str(self.asset.change),
                           price=format(self.asset.price, '.2f'),
-                          fiat=str(self.asset.fiat))
+                          fiat=str(self.settings.fiat))
 
     # def notify(self):
     #     """
@@ -115,7 +117,7 @@ class PriceNotification(Notification):
 
 class TradeNotification(Notification):
     """
-    A notification representing a buying opporunity for an asset.
+    A notification representing a buying or selling opportunity for an asset.
 
     Args:
         asset: (coin.Coin): A Coin object.
@@ -141,10 +143,10 @@ class TradeNotification(Notification):
             None
         """
 
-        if self.asset.buy_notifiaction():
+        if self.asset.buy_notification():
             self.message = self.help_build("BUY ALERT: {id} ({symbol}) is worth"
                                            " {price} {fiat}!")
-        elif self.asset.buy_notifiaction():
+        elif self.asset.sell_notification():
             self.message = self.help_build("SELL ALERT: {id} ({symbol}) is "
                                            "worth {price} {fiat}!")
 
@@ -152,11 +154,17 @@ class TradeNotification(Notification):
         """
         Helps build the message.
 
+        Args:
+            msg (str): the message that needs to be formatted
+
+        Returns:
+            The properly formatted message as a string.
+
         """
         return msg.format(id=self.asset.id,
                           symbol=self.asset.symbol,
                           price=self.asset.price,
-                          fiat=self.asset.fiat)
+                          fiat=self.settings.fiat)
 
 
 class VolumeNotification(Notification):

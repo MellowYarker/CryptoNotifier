@@ -6,6 +6,8 @@ import urllib3
 import json
 import pickle
 import certifi
+import os
+from settings.settings import Settings
 
 # TODO: save coin information in sqlite3
 # TODO: read JSON data, determine how long to hold data in a pickle file (and how to delete)
@@ -29,6 +31,7 @@ class Scraper:
         self.link = "https://api.coinmarketcap.com/v1/ticker/"
         self.http = urllib3.PoolManager(cert_reqs='CERT_REQUIRED',
                                         ca_certs=certifi.where())
+        self.settings = Settings()
 
     # TODO: replace ValueError with a logger.
     def get_coin_with_id(self, id):
@@ -50,7 +53,7 @@ class Scraper:
         for coin in self.coins:
             if coin.has_id(id):
                 return coin
-        raise ValueError("You have not added this coin in coins.txt!")
+        raise ValueError("You have not added this coin in settings/coins.txt!")
 
     def update_frequency(self):
         """
@@ -58,7 +61,7 @@ class Scraper:
             - the number of minutes between the script updating the information.
 
         """
-        return self.coins[0].update
+        return self.settings.update
 
     def print_coins(self):
         """
@@ -98,6 +101,14 @@ class Scraper:
                 except FileNotFoundError:
                     self.__dump(result, loc)
                 return result
+
+        # error connecting to site
+        except urllib3.exceptions.MaxRetryError:
+            os.system(
+                """osascript -e 'display notification "FAILED TO CONNECT" 
+                with title "FATAL ERROR"'""")
+            raise Exception("Failed to connect to server. Check internet "
+                            "connection.")
 
         except ValueError:
             raise Exception("Something went wrong")

@@ -1,6 +1,17 @@
 # Crypto Notifier
 ### A program that displays crypto price alerts via push notifications on Macs.
 
+#### disclaimer
+* I built this for people (me, really), not bots. Thanks to this I've virtually stopped looking at my portfolio (whereas before I checked it multiple times an hour). This program isn't built to update you on the price of your holdings every 3 seconds, I like using it to let me know when there's been a noticable change in price, for example +15% in the last day. Here's a quick list of the types of notifications currently supported:
+
+    * Price percent change: If the price changes x% in the last (hour, day, week), there's a notification.
+    * Buy alert: If the price of a coin costs $10 and you want to buy it at $10 or less, you get a notification.
+
+*Coming soon*
+
+    * Sell alert: If the price of a coin costs $40 and you want to sell it at $40 or more, you get a notification.
+    * Volume alert: If the volume is high enough for you to buy or sell a large quantity of coins then you get a notification.
+
 ![alt text](https://github.com/MellowYarker/CryptoNotifier/blob/master/images/grsExample.png "Example Notification")
 
 This program uses the free CoinMarketCap.com [api](https://coinmarketcap.com/api/), if the coin you're looking for isn't there then there won't be data for it.
@@ -9,11 +20,17 @@ This program uses the free CoinMarketCap.com [api](https://coinmarketcap.com/api
 ## REQUIREMENTS
   * A Mac (this uses the MacOS notification center)
   * [Python 3.6+](https://www.python.org/downloads/release/python-365/)
-  * Clone this repo to download it then open a terminal and navigate to CryptoNotifier/install
-    * `$ sh dependencies.sh`
-    * if the dependencies script fails, try:
-      * `$ sh retry.sh`
-    * if this also fails, see if you have pip or pip3 installed, if not [install it](https://stackoverflow.com/questions/6587507/how-to-install-pip-with-python-3)
+
+
+## Set up
+  1. Clone this repo to download it.
+  2. Open finder, navigate to wherever you downloaded CryptoNotifier (where ever you downloaded it).
+  * Now go to CryptoNotifier/install
+  3. Press command + spacebar
+  * Type terminal
+  4. In terminal, type `cd `, go back to finder, drag the install folder into the terminal and once the path is displayed press enter.
+  5. If you've installed python 3.6 or higher, type `python3 setup.py` in the terminal. If not, check the requirements heading.
+    * if this fails, see if you have pip or pip3 installed, if not [install it](https://stackoverflow.com/questions/6587507/how-to-install-pip-with-python-3)
 
 
 
@@ -37,7 +54,7 @@ This program uses the free CoinMarketCap.com [api](https://coinmarketcap.com/api
 
             - CAD, USD, EUR, etc
 
-            - you can only choose one.
+            - you can only choose **one**.
 
         - the time period for the change in price
 
@@ -47,7 +64,7 @@ This program uses the free CoinMarketCap.com [api](https://coinmarketcap.com/api
 
             - weekly (7 days)
 
-            - you can only choose one (for now)
+            - you can only choose **one**
 
         - how often you want the scraper to scan CMC
 
@@ -68,7 +85,7 @@ This program uses the free CoinMarketCap.com [api](https://coinmarketcap.com/api
   * `python3 main.py`
 
 ## Notes
-This tool isn't complete, I just wanted to put it up because basic alerts work. The code and documentation need work but it's pretty extendible so that's good.
+This tool isn't complete, I just wanted to put it up because basic alerts work. Working on documentaion and a few other notifications and features. Not planning on writing any tests for this outside the occasional doctest.
 
 feel free to donate if you'd like :)
 
