@@ -1,14 +1,15 @@
 # Crypto Notifier
 ### A program that displays crypto price alerts via push notifications on Macs.
 
-#### disclaimer
-* I built this for people (me, really), not bots. Thanks to this I've virtually stopped looking at my portfolio (whereas before I checked it multiple times an hour). This program isn't built to update you on the price of your holdings every 3 seconds, I like using it to let me know when there's been a noticable change in price, for example +15% in the last day. Here's a quick list of the types of notifications currently supported:
+* I built this for people (me, really), not bots. Thanks to this I've virtually stopped looking at my portfolio on apps and websites (whereas before I checked it multiple times an hour). This program isn't built to update you on the price of your holdings every 3 seconds, I like using it to let me know when there's been a noteable change in price, for example +15% in the last day.
+
+Here's a quick list of the types of notifications **currently supported**:
 
     * Price percent change: If the price changes x% in the last (hour, day, week), there's a notification.
     * Buy alert: If the price of a coin costs $10 and you want to buy it at $10 or less, you get a notification.
 
-*Coming soon*
-
+Coming soon
+    * Positive/negative price percent change: Instead of (+/-) 15%, you can set up notifications for +15% and -30%
     * Sell alert: If the price of a coin costs $40 and you want to sell it at $40 or more, you get a notification.
     * Volume alert: If the volume is high enough for you to buy or sell a large quantity of coins then you get a notification.
 
@@ -24,17 +25,17 @@ This program uses the free CoinMarketCap.com [api](https://coinmarketcap.com/api
 
 ## Set up
   1. Clone this repo to download it.
-  2. Open finder, navigate to wherever you downloaded CryptoNotifier (where ever you downloaded it).
-  * Now go to CryptoNotifier/install
+  2. Open finder and navigate to wherever you downloaded this program.
+  * Once there, open the `CryptoNotifier` folder.
   3. Press command + spacebar
-  * Type terminal
-  4. In terminal, type `cd `, go back to finder, drag the install folder into the terminal and once the path is displayed press enter.
+  * Type `terminal` and press enter.
+  4. In terminal, type `cd ` (with a space after, so "cd "), go back to finder and drag the `install` folder into the terminal. Once the filepath is displayed press enter.
   5. If you've installed python 3.6 or higher, type `python3 setup.py` in the terminal. If not, check the requirements heading.
     * if this fails, see if you have pip or pip3 installed, if not [install it](https://stackoverflow.com/questions/6587507/how-to-install-pip-with-python-3)
 
 
 
-##### Instructions
+#### Instructions
 1. Open coins.txt file,
     * Add the coins you want to recieve updates on, syntax for this file is as follows:
 
