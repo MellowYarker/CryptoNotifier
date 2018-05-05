@@ -25,7 +25,7 @@ This program uses the free CoinMarketCap.com [api](https://coinmarketcap.com/api
 
 
 ## Set up
-  1. Clone this repo to download it.
+  1. Clone this repo to download it (found at the top right of this page).
   ![alt text](https://github.com/MellowYarker/CryptoNotifier/blob/master/images/clone.png "Clone")
   2. Open finder and navigate to wherever you downloaded this program.
     * Once there, open the `CryptoNotifier` folder.
@@ -33,6 +33,7 @@ This program uses the free CoinMarketCap.com [api](https://coinmarketcap.com/api
     * Type `terminal` and press enter.
 
   4. In terminal, type `cd ` (with a space after, so "cd "), go back to finder and drag the `install` folder into the terminal.
+
   ![alt text](https://github.com/MellowYarker/CryptoNotifier/blob/master/images/finder_terminal.png "Finder and Terminal")
 
   ![alt text](https://github.com/MellowYarker/CryptoNotifier/blob/master/images/dragged.png "Dragged In")
@@ -42,7 +43,7 @@ This program uses the free CoinMarketCap.com [api](https://coinmarketcap.com/api
   ![alt text](https://github.com/MellowYarker/CryptoNotifier/blob/master/images/directory.png "Directory")
   5. If you've installed python 3.6 or higher, type `python3 setup.py` in the terminal. If not, check the requirements heading.
 
-        if this fails, see if you have pip or pip3 installed by typing `which -a pip` or `which -a pip3`, if not [install it](https://stackoverflow.com/questions/6587507/how-to-install-pip-with-python-3)
+  if this fails, see if you have pip or pip3 installed by typing `which -a pip` or `which -a pip3`, if not [install it](https://stackoverflow.com/questions/6587507/how-to-install-pip-with-python-3)
 
 
 #### A Quick Example
