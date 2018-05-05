@@ -37,12 +37,12 @@ This program uses the free CoinMarketCap.com [api](https://coinmarketcap.com/api
 
   ![alt text](https://github.com/MellowYarker/CryptoNotifier/blob/master/images/dragged.png "Dragged In")
 
-    * Once the filepath is displayed press enter.
+    Once the filepath is displayed press enter.
 
   ![alt text](https://github.com/MellowYarker/CryptoNotifier/blob/master/images/directory.png "Directory")
   5. If you've installed python 3.6 or higher, type `python3 setup.py` in the terminal. If not, check the requirements heading.
 
-        * if this fails, see if you have pip or pip3 installed by typing `which -a pip` or `which -a pip3`, if not [install it](https://stackoverflow.com/questions/6587507/how-to-install-pip-with-python-3)
+        if this fails, see if you have pip or pip3 installed by typing `which -a pip` or `which -a pip3`, if not [install it](https://stackoverflow.com/questions/6587507/how-to-install-pip-with-python-3)
 
 
 #### A Quick Example
@@ -104,8 +104,6 @@ This program uses the free CoinMarketCap.com [api](https://coinmarketcap.com/api
 3. open terminal and navigate to the CryptoNotifier directory.
   * `python3 main.py`
 
-## Notes
-This tool isn't complete, I just wanted to put it up because basic alerts work. Working on documentaion and a few other notifications and features. Not planning on writing any tests for this outside the occasional doctest.
 
 feel free to donate if you'd like :)
 
