@@ -32,14 +32,16 @@ This program uses the free CoinMarketCap.com [api](https://coinmarketcap.com/api
   3. Press command + spacebar
     * Type `terminal` and press enter.
 
-  ![alt text](https://github.com/MellowYarker/CryptoNotifier/blob/master/images/finder_terminal.png "Finder and Terminal")
   4. In terminal, type `cd ` (with a space after, so "cd "), go back to finder and drag the `install` folder into the terminal.
+  ![alt text](https://github.com/MellowYarker/CryptoNotifier/blob/master/images/finder_terminal.png "Finder and Terminal")
 
   ![alt text](https://github.com/MellowYarker/CryptoNotifier/blob/master/images/dragged.png "Dragged In")
+
     * Once the filepath is displayed press enter.
 
   ![alt text](https://github.com/MellowYarker/CryptoNotifier/blob/master/images/directory.png "Directory")
   5. If you've installed python 3.6 or higher, type `python3 setup.py` in the terminal. If not, check the requirements heading.
+
         * if this fails, see if you have pip or pip3 installed by typing `which -a pip` or `which -a pip3`, if not [install it](https://stackoverflow.com/questions/6587507/how-to-install-pip-with-python-3)
 
 
@@ -91,11 +93,12 @@ This program uses the free CoinMarketCap.com [api](https://coinmarketcap.com/api
 2. Open coins.txt file, the coins there now are just examples
     * Add the coins you want to recieve updates on, syntax for this file is as follows:
 
-      coin ID, coin symbol, buy price, sell price, percent increase, percent decrease
+      **coin ID**, **coin symbol**, **buy price**, **sell price**, **percent increase**, **percent decrease**
 
-      ex: bitcoin, BTC, 8000, 20000, 10, -10
+      **ex**: bitcoin, BTC, 8000, 20000, 10, -10
 
    An example set up:
+
    ![alt text](https://github.com/MellowYarker/CryptoNotifier/blob/master/images/exampleCoins.png "Coin Setup")
 
 3. open terminal and navigate to the CryptoNotifier directory.
