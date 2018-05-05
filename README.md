@@ -1,17 +1,16 @@
 # Crypto Notifier
 ### A program that displays crypto price alerts via push notifications on Macs.
 
-* I built this for people (me, really), not bots. Thanks to this I've virtually stopped looking at my portfolio on apps and websites (whereas before I checked it multiple times an hour). This program isn't built to update you on the price of your holdings every 3 seconds, I like using it to let me know when there's been a noteable change in price, for example +15% in the last day.
+* I built this for people (me, really), not bots. Thanks to this I've virtually stopped looking at my portfolio on apps and websites (whereas before I checked it multiple times an hour). This program isn't built to update you on the price of your holdings every 3 seconds, I like using it to let me know when there's been a notable change in price, for example +15% in the last day.
 
 Here's a quick list of the types of notifications **currently supported**:
 
-    * Price percent change: If the price changes x% in the last (hour, day, week), there's a notification.
+    * Price percent change: Be notified when the price increase x% or decreases y%
     * Buy alert: If the price of a coin costs $10 and you want to buy it at $10 or less, you get a notification.
+    * Sell alert: If the price of a coin costs $40 and you want to sell it at $40 or more, you get a notification.
 
 *Coming soon*
 
-    * Positive/negative price percent change: Instead of (+/-) 15%, you can set up notifications for +15% and -30%
-    * Sell alert: If the price of a coin costs $40 and you want to sell it at $40 or more, you get a notification.
     * Volume alert: If the volume is high enough for you to buy or sell a large quantity of coins then you get a notification.
 
 ![alt text](https://github.com/MellowYarker/CryptoNotifier/blob/master/images/grsExample.png "Example Notification")
@@ -22,6 +21,7 @@ This program uses the free CoinMarketCap.com [api](https://coinmarketcap.com/api
 ## REQUIREMENTS
   * A Mac (this uses the MacOS notification center)
   * [Python 3.6+](https://www.python.org/downloads/release/python-365/)
+  * A little patience and a bit of familiarity with the [command line](https://www.davidbaumgold.com/tutorials/command-line/).
 
 
 ## Set up
@@ -43,20 +43,17 @@ This program uses the free CoinMarketCap.com [api](https://coinmarketcap.com/api
         * if this fails, see if you have pip or pip3 installed by typing `which -a pip` or `which -a pip3`, if not [install it](https://stackoverflow.com/questions/6587507/how-to-install-pip-with-python-3)
 
 
+#### A Quick Example
+1. Open terminal and navigate to the CryptoNotifier directory (step 4 in set up).
+
+2. type `python3 main.py`
+
+3. There should be notifications for bitcoin and litecoin (you can change these).
+
+
 
 #### Instructions
-1. Open coins.txt file,
-    * Add the coins you want to recieve updates on, syntax for this file is as follows:
-
-      coin ID, coin symbol, buy price, price percentage change
-
-      ex: bitcoin, BTC, 8000, 5
-
-   If the price change is 5, it means (+/-) 5%
-     * **(note)** The option to have individual increase and decrease thresholds is being built.
-   Assume we want everything relative to the Canadian dollar (CAD) (**this is determined in the settings file**), according to the chosen buy price, if bitcoin is worth $8000 CAD there will be a buy alert.
-
-2. open settings.txt
+1. open settings.txt
 
     The settings file (settings.txt) currently has 3 options:
 
@@ -90,6 +87,16 @@ This program uses the free CoinMarketCap.com [api](https://coinmarketcap.com/api
 
     This setup converts to Canadian dollars, watches the 24 hour price change,
     and scans coinmarketcap.com every 30 minutes.
+
+2. Open coins.txt file, the coins there now are just examples
+    * Add the coins you want to recieve updates on, syntax for this file is as follows:
+
+      coin ID, coin symbol, buy price, sell price, percent increase, percent decrease
+
+      ex: bitcoin, BTC, 8000, 20000, 10, -10
+
+   An example set up:
+   ![alt text](https://github.com/MellowYarker/CryptoNotifier/blob/master/images/exampleCoins.png "Coin Setup")
 
 3. open terminal and navigate to the CryptoNotifier directory.
   * `python3 main.py`

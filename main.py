@@ -36,12 +36,13 @@ if __name__ == "__main__":
                 noti.set_message()
                 alerts.append(noti)
 
-            price_alert = coin.price_notification()
-            # if the price broke the threshold make a price_alert
-            if price_alert != 0:
-                noti = PriceNotification(coin, price_alert)
+            change_alert = coin.change_notification()
+            # if the price broke the threshold make a change_alert
+            if change_alert != 0:
+                noti = PriceNotification(coin, change_alert)
                 noti.set_message()
                 alerts.append(noti)
+            print(alerts)
             for alert in alerts:
                 alert.notify()
                 # time between notifications

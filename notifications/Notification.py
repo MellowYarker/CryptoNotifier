@@ -105,15 +105,6 @@ class PriceNotification(Notification):
                           price=format(self.asset.price, '.2f'),
                           fiat=str(self.settings.fiat))
 
-    # def notify(self):
-    #     """
-    #     Displays the notification.
-    #
-    #     """
-    #     os.system(
-    #         """osascript -e 'display notification "{}" with title "{}"'""".\
-    #         format(self.message, self.title))
-
 
 class TradeNotification(Notification):
     """

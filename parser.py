@@ -4,15 +4,19 @@ Parses the json and assigns data to Coin objects.
 
 from settings.settings import Settings
 
+# TODO: does this need to be in its own file?
+
 
 def parse(coin, data):
     """
-    I'll write this later basically it just parses the data from json and
-    associates to coin objects.
+    Parse the JSON data and assign relevant information to the coin object.
 
-    hour day and week remain for now in case I want to do something with them
-    in the near future. This will be cleaner soon enough and I may move it
-    to a class instead of having it alone in this file.
+    Args:
+        coin (:obj: coin.Coin): A coin object.
+        data (:obj: json): JSON data retrieved from coinmarketcap about a coin.
+
+    Returns:
+        None
 
     """
     settings = Settings()

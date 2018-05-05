@@ -38,7 +38,12 @@ def create_coins(file):
             coin = coin.split(", ")
             try:
                 coins.append(
-                    Coin(coin[0], coin[1], float(coin[2]), float(coin[3][:-1])))
+                    Coin(coin[0],
+                         coin[1],
+                         float(coin[2]),
+                         float(coin[3]),
+                         float(coin[4]),
+                         float(coin[5][:-1])))
             except ValueError:
                 raise ValueError("Please check settings/coins.txt to make sure"
                                  " the document is formatted correctly.")

@@ -1,5 +1,5 @@
 """
-Connects to the coinmarketcap api to get info about coin prices
+Connects to the coinmarketcap api to gather information about coins.
 
 """
 import urllib3
@@ -23,6 +23,7 @@ class Scraper:
         time (int): The time the scrape retrived the data. (not implemented)
         link (str): The coinmarketcap api link.
         http (obj): A urllib3 object.
+        settings (:obj: Settings): A Settings object that contains the settings.
     """
 
     def __init__(self, coins):
@@ -36,10 +37,12 @@ class Scraper:
     # TODO: replace ValueError with a logger.
     def get_coin_with_id(self, id):
         """
+        Args:
+            id (string): An id of a coin.Coin object.
         Return:
             returns coin.Coin with id id, if it exists.
         >>> import coin
-        >>> btc = coin.Coin("bitcoin", "BTC", 8000, 10)
+        >>> btc = coin.Coin("bitcoin", "BTC", 8000, 10000, 10, -15)
         >>> b = Scraper([btc])
         >>> passes = b.get_coin_with_id("bitcoin")
         >>> passes.symbol
@@ -58,7 +61,7 @@ class Scraper:
     def update_frequency(self):
         """
         Returns:
-            - the number of minutes between the script updating the information.
+            The number of minutes between the script updating the information.
 
         """
         return self.settings.update
@@ -66,23 +69,35 @@ class Scraper:
     def print_coins(self):
         """
         Returns:
-            a string of the _coins this scrape searches for.
+            A string of the coins this scraper searches for.
+
+        >>> import  coin
+        >>> lst = [coin.Coin("bitcoin", "BTC", 8000, 10000, 10, -10), \
+        coin.Coin("litecoin", "LTC", 200, 400, 15, -15), \
+        coin.Coin("monero", "XMR", 300, 500, 10, -5)]
+        >>> test = Scraper(lst)
+        >>> test.print_coins()
+        Coins and Tokens:
+        bitcoin
+        litecoin
+        monero
 
         """
         coins = self.coins
-        result = ""
+        result = "Coins and Tokens:"
         for coin in coins:
-            result += coin + "\n"
+            result += "\n" + coin.id
+        print(result)
 
     # TODO: work on exceptions
     def request_coin(self, name):
         """
-        Requests data about a coin, stores data in this coins pickle file.
+        Requests data about a coin, stores data in this coin's pickle file.
 
         Args:
             name (str): a string that represents a Coin objects id.
 
-        Returns
+        Returns:
             JSON data describing the coin with the id name.
         """
         try:
@@ -117,8 +132,11 @@ class Scraper:
         """
         Load a pickled file.
 
+        Args:
+            file (file): A pickled file that contains information.
+
         Return:
-            A string of data retrived from the pickle file file.
+            A string of data retrived from the pickle file `file`.
 
         """
         try:
@@ -130,6 +148,11 @@ class Scraper:
     def __dump(self, obj, file):
         """
         Serialize the data gathered to access it elsewhere.
+
+        Args:
+            obj (:obj:): The object(s) to be serialized.
+
+            file (file): The file the data will be stored in
 
         """
         with open(file + ".pickle", 'wb') as f:

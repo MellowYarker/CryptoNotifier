@@ -13,17 +13,23 @@ class Coin:
     A cryptocurrency asset.
 
     Attributes:
-        id (str): The id of the Coin. Ex bitcoin, ethereum.
+        id (str): The id of the Coin. Ex: bitcoin, ethereum.
         symbol (str): The symbol of the Coin. Ex: BTC, ETH.
         buy_price (float): The price at which a Coin is worth buying.
-        price_alert (float): The % change in price in a set time period that
-            results in an price_alert.
+        sell_price (float): The desired price at which to sell a Coin.
+        increase_alert (float): The % increase in price in a set time
+            period that results in a change_alert.
+        decrease_alert (float): The % decrease in price in a set time
+            period that results in a change_alert.
+        change (float): The percent change in price over the desired duration
+            in the settings file.
         to_btc (float): The price of this asset in terms of bitcoin.
         price (float): The price of this asset in terms of the chosen fiat
             currency.
     """
 
-    def __init__(self, id, symbol, buy_alert, price_alert):
+    def __init__(self, id, symbol, buy_alert, sell_alert, increase_alert,
+                 decrease_alert):
         """
         Creates a new Coin object.
 
@@ -31,13 +37,21 @@ class Coin:
             id (str): The id of this Coin.
             symbol(str): The symbol of this Coin.
             buy_alert (float): The price at which a Coin is worth buying.
-            price_alert (float): The % change in price in a set time period that
-                results in an price_alert.
+            sell_alert (float): The desired price at which to sell a Coin.
+            increase_change_alert (float): The % increase in price in a set time
+                period that results in a change_alert.
+            decrease_change_alert (float): The % decrease in price in a set time
+                period that results in a change_alert.
         """
         self.id = id
         self.symbol = symbol
+
         self.buy_price = buy_alert
-        self.price_change_alert = price_alert
+        self.sell_price = sell_alert
+
+        self.increase_alert = increase_alert
+        self.decrease_alert = decrease_alert
+
         self.change = 0
         self.to_btc = 0
         self.price = 0
@@ -56,24 +70,31 @@ class Coin:
 
     def set_price(self, value):
         """
+        Sets the price of this Coin. If it can't be converted to the desired
+        currency (from the settings) it defaults to USD.
 
-        :param value:
-        :type value:
-        :return:
-        :rtype:
+        Args:
+            value (float): The value of this Coin in USD. This is a direct
+                result from the coinmarketcap API
+
         """
         c = CurrencyConverter()
         try:
             self.price = c.convert(value, 'USD', Settings().fiat)
         except ValueError:
             self.price = value
-            # TODO ADD A LOGGER HERE THAT SAYS IT COULDN'T CONVERT
-            # TO THE SETTINGS CURRENCY
+            # TODO ADD A LOGGER HERE THAT SAYS IT COULDN'T CONVERT TO THE
+            # SETTINGS CURRENCY
 
     def has_id(self, id):
         """
-        Return True if this Coin has id id.
+        Determine if this id belongs to this Coin
 
+        args:
+            id (string): A string that might be a coin id.
+
+        Returns:
+            True if this Coin has id id.
 
         """
         return self.id == id
@@ -81,34 +102,42 @@ class Coin:
     # TODO: See usage and determine if this is detailed enough *might need price
     def __eq__(self, other):
         """
-        Return True if this Coin is equivalent to other.
+        Compare two Coin objects.
+
+        args:
+            other (:object:): A Coin object.
+
+        Returns:
+            True if other is equivalent to this Coin.
 
         """
         if type(self) == type(other):
             return self.id == other.id and self.symbol == other.symbol and \
                    self.buy_price == other.buy_price and \
-                   self.price_change_alert == other.price_change_alert
+                   self.sell_price == other.sell_price and \
+                   self.increase_alert == other.increase_alert and \
+                   self.decrease_alert == other.decrease_alert
 
     # TODO: refactor this method once individual increase/decrease options exist
-    def price_notification(self):
+    def change_notification(self):
         """
-        Determins whether an increase, decrease, or no price price_alert should
+        Determins whether an increase, decrease, or no change_alert should
         be made.
 
         Returns:
-            1 if a price increased at least the price_alert amount
-            -1 if a price decreased at least the price_alert amount
+            1 if a price increased at least the change_alert amount
+            -1 if a price decreased at least the change_alert amount
             0 otherwise.
 
         """
         if self.change != 0:
             # price_change_alert if above positive threshold
-            if self.change > 0 and self.price_change_alert > 0:
-                if self.price_change_alert <= self.change:
+            if self.change > 0:
+                if abs(self.increase_alert) <= self.change:
                     return 1
             # price_change_alert if below negative threshold
-            elif self.change < 0 and self.price_change_alert*-1 < 0:
-                if -1 * self.price_change_alert >= self.change:
+            elif self.change < 0:
+                if -1 * abs(self.decrease_alert) >= self.change:
                     return -1
         return 0
 
@@ -130,4 +159,4 @@ class Coin:
         Returns:
             True if a sell alert should be triggered; False otherwise.
         """
-        pass
+        return self.sell_price <= self.price
