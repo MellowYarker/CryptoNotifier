@@ -42,7 +42,6 @@ if __name__ == "__main__":
                 noti = PriceNotification(coin, change_alert)
                 noti.set_message()
                 alerts.append(noti)
-            print(alerts)
             for alert in alerts:
                 alert.notify()
                 # time between notifications
