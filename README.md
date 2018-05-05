@@ -1,7 +1,13 @@
 # Crypto Notifier
 ### A program that displays crypto price alerts via push notifications on Macs.
 
-* I built this for people (me, really), not bots. Thanks to this I've virtually stopped looking at my portfolio on apps and websites (whereas before I checked it multiple times an hour). This program isn't built to update you on the price of your holdings every 3 seconds, I like using it to let me know when there's been a notable change in price, for example +15% in the last day.
+## REQUIREMENTS
+  * A Mac (this uses the MacOS notification center)
+  * [Python 3.6+](https://www.python.org/downloads/release/python-365/)
+  * A little patience and a bit of familiarity with the [command line](https://www.davidbaumgold.com/tutorials/command-line/).
+
+## Note
+Thanks to this I've pretty much stopped looking at my portfolio on apps and websites (whereas before I checked multiple times an hour). This program isn't built to update you on the price of your holdings every 3 seconds, I like using it to let me know when there's been a notable change in price like +15% in the last day or if a coin's price has fallen to a point where I'd like to buy it. I hope this helps you as much as it's helped me.
 
 Here's a quick list of the types of notifications **currently supported**:
 
@@ -18,12 +24,6 @@ You can choose the fiat currency you'd like prices to be displayed in, how often
 ![alt text](https://github.com/MellowYarker/CryptoNotifier/blob/master/images/grsExample.png "Example Notification")
 
 This program uses the free CoinMarketCap.com [api](https://coinmarketcap.com/api/), if the coin you're looking for isn't there then there won't be data for it.
-
-
-## REQUIREMENTS
-  * A Mac (this uses the MacOS notification center)
-  * [Python 3.6+](https://www.python.org/downloads/release/python-365/)
-  * A little patience and a bit of familiarity with the [command line](https://www.davidbaumgold.com/tutorials/command-line/).
 
 
 ## Set up
