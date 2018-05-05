@@ -45,42 +45,42 @@ This program uses the free CoinMarketCap.com [api](https://coinmarketcap.com/api
   ![alt text](https://github.com/MellowYarker/CryptoNotifier/blob/master/images/directory.png "Directory")
   5. If you've installed python 3.6 or higher, type `python3 setup.py` in the terminal. If not, check the requirements heading.
 
-  if this fails, see if you have pip or pip3 installed by typing `which -a pip` or `which -a pip3`, if not [install it](https://stackoverflow.com/questions/6587507/how-to-install-pip-with-python-3)
+  **If this fails**, see if you have pip or pip3 installed by typing `which -a pip` or `which -a pip3`, if not [install it](https://stackoverflow.com/questions/6587507/how-to-install-pip-with-python-3)
 
 
 #### A Quick Example
-1. Open terminal and navigate to the CryptoNotifier directory (step 4 in set up).
+1. Open terminal and navigate to the *CryptoNotifier* directory (step 4 in set up).
 
-2. type `python3 main.py`
+2. Type `python3 main.py`
 
 3. There should be notifications for bitcoin and litecoin (you can change these).
 
 
 
 #### Instructions
-1. open settings.txt
+1. Open **settings.txt**
 
     The settings file (settings.txt) currently has 3 options:
 
-        - the fiat currency you'd like to see prices listed in.
+        - The fiat currency you'd like to see prices listed in.
 
             - CAD, USD, EUR, etc
 
-            - you can only choose **one**.
+            - You can only choose one.
 
-        - the time period for the change in price
+        - The time period for the change in price
 
-            - hourly
+            - Hourly
 
-            - daily (24 hours)
+            - Daily (24 hours)
 
-            - weekly (7 days)
+            - Weekly (7 days)
 
-            - you can only choose **one**
+            - You can only choose one
 
-        - how often you want the scraper to scan CMC
+        - How often you want the scraper to scan CMC
 
-            - this is an integer, ex. 10 = 10 minutes
+            - This is an integer, ex. 10 = 10 minutes
 
     Here's an example of a setup in settings.txt:
 
@@ -93,7 +93,7 @@ This program uses the free CoinMarketCap.com [api](https://coinmarketcap.com/api
     This setup converts to Canadian dollars, watches the 24 hour price change,
     and scans coinmarketcap.com every 30 minutes.
 
-2. Open coins.txt file, the coins there now are just examples
+2. Open **coins.txt**, *the coins there now are just examples*.
     * Add the coins you want to recieve updates on, syntax for this file is as follows:
 
       **coin ID**, **coin symbol**, **buy price**, **sell price**, **percent increase**, **percent decrease**
@@ -104,11 +104,11 @@ This program uses the free CoinMarketCap.com [api](https://coinmarketcap.com/api
 
    ![alt text](https://github.com/MellowYarker/CryptoNotifier/blob/master/images/exampleCoins.png "Coin Setup")
 
-3. open terminal and navigate to the CryptoNotifier directory.
+3. Open terminal and navigate to the CryptoNotifier directory.
   * `python3 main.py`
 
 
-feel free to donate if you'd like :)
+Feel free to donate if you'd like :)
 
 BTC: 12czBbxm5teNqo26tB9EFYs2U6tfajDQqD
 
