@@ -9,6 +9,8 @@ Here's a quick list of the types of notifications **currently supported**:
 * **Buy alert**: If the price of a coin costs $10 and you want to buy it at $10 or less, you get a notification.
 * **Sell alert**: If the price of a coin costs $40 and you want to sell it at $40 or more, you get a notification.
 
+You can choose the fiat currency you'd like prices to be displayed in, how often you want to *scan* coinmarketcap.com, and the time frame between price changes. Ex: 24 hour change in price.
+
 *Coming soon*
 
 * **Volume alert**: If the volume is high enough for you to buy or sell a large quantity of coins then you get a notification.
