@@ -30,7 +30,7 @@ This program uses the free CoinMarketCap.com [api](https://coinmarketcap.com/api
   1. Clone this repo to download it (found at the top right of this page).
   ![alt text](https://github.com/MellowYarker/CryptoNotifier/blob/master/images/clone.png "Clone")
   2. Open finder and navigate to wherever you downloaded this program.
-    * Once there, open the `CryptoNotifier` folder.
+    * Once there, open the `CryptoNotifier-master` folder.
   3. Press command + spacebar
     * Type `terminal` and press enter.
 
@@ -48,8 +48,8 @@ This program uses the free CoinMarketCap.com [api](https://coinmarketcap.com/api
   **If this fails**, see if you have pip or pip3 installed by typing `which -a pip` or `which -a pip3`, if not [install it](https://stackoverflow.com/questions/6587507/how-to-install-pip-with-python-3)
 
 
-#### A Quick Example
-1. Open terminal and navigate to the *CryptoNotifier* directory (step 4 in set up).
+### A Quick Example
+1. Open terminal and navigate to the *CryptoNotifier-master* directory (step 4 in set up).
 
 2. Type `python3 main.py`
 
@@ -104,7 +104,7 @@ This program uses the free CoinMarketCap.com [api](https://coinmarketcap.com/api
 
    ![alt text](https://github.com/MellowYarker/CryptoNotifier/blob/master/images/exampleCoins.png "Coin Setup")
 
-3. Open terminal and navigate to the CryptoNotifier directory.
+3. Open terminal and navigate to the *CryptoNotifier-master* directory.
   * `python3 main.py`
 
 
