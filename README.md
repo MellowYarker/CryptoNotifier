@@ -49,7 +49,9 @@ This program uses the free CoinMarketCap.com [api](https://coinmarketcap.com/api
 
 
 ### A Quick Example
-1. Open terminal and navigate to the *CryptoNotifier-master* directory (step 4 in set up).
+1. If coming from **set up** type `cd ../` in terminal then go to step 2
+* **OTHERWISE**
+1. Open terminal and navigate to the *CryptoNotifier-master* directory.
 
 2. Type `python3 main.py`
 
