@@ -120,13 +120,13 @@ class Scraper:
         # error connecting to site
         except urllib3.exceptions.MaxRetryError:
             os.system(
-                """osascript -e 'display notification "FAILED TO CONNECT" 
+                """osascript -e 'display notification "FAILED TO CONNECT"
                 with title "FATAL ERROR"'""")
             raise Exception("Failed to connect to server. Check internet "
                             "connection.")
 
         except ValueError:
-            raise Exception("Something went wrong")
+            raise ValueError("Something went wrong")
 
     def __load(self, file):
         """

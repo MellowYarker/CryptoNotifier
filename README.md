@@ -96,7 +96,7 @@ This program uses the free CoinMarketCap.com [api](https://coinmarketcap.com/api
     and scans coinmarketcap.com every 30 minutes.
 
 2. Open **coins.txt**, *the coins there now are just examples*.
-    * Add the coins you want to recieve updates on, syntax for this file is as follows:
+    * Add the coins you want to receive updates on, syntax for this file is as follows:
 
       **coin ID**, **coin symbol**, **buy price**, **sell price**, **percent increase**, **percent decrease**
 
@@ -109,6 +109,15 @@ This program uses the free CoinMarketCap.com [api](https://coinmarketcap.com/api
 3. Open terminal and navigate to the *CryptoNotifier-master* directory.
   * `python3 main.py`
 
+That's it, just let it run in the background (don't close the terminal) and go on about your day.
+If you want to change the coins or settings, just change the files (as described in the instructions) and save them.
+
+* You can re-run the program from the terminal if you'd like to scan right away, but it checks if coins.txt or settings.txt have changed between scans so it's not necessary.
+
+### IMPORTANT
+If this program crashes, you probably won't know until you check the terminal for an error message. The only reason I've found it crashes (aside from formatting errors in the settings, but you'll know as soon as you run it) is if it tries to scan without an internet connection (I guess theoretically it would crash if coinmarketcap.com was down).
+
+I've tried sending a push notification (*request.py* line 121) to alert the user if the program crashed but it doesn't work, another work-around I've considered is sending a notification every now and then alerting the user that the program is running.
 
 Feel free to donate if you'd like :)
 
@@ -116,6 +125,4 @@ BTC: 12czBbxm5teNqo26tB9EFYs2U6tfajDQqD
 
 GRS: FoCWRhe5CTJJwBPjtKy939ACB4S7ymU27Z
 
-XLM: GAY7TEP5OCGHB37RBE3KJIYRQO7FPSL5GZRE6VIBZVXKOPQOFDEUB2W4
-
-
+Stellar: GAY7TEP5OCGHB37RBE3KJIYRQO7FPSL5GZRE6VIBZVXKOPQOFDEUB2W4
