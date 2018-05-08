@@ -6,6 +6,8 @@
   * [Python 3.6+](https://www.python.org/downloads/release/python-365/)
   * A little patience and a bit of familiarity with the [command line](https://www.davidbaumgold.com/tutorials/command-line/).
 
+![alt text](https://github.com/MellowYarker/CryptoNotifier/blob/master/images/example.gif "Example GIF")
+
 ## Note
 Thanks to this I've pretty much stopped looking at my portfolio on apps and websites (whereas before I checked multiple times an hour). This program isn't built to update you on the price of your holdings every 3 seconds, I like using it to let me know when there's been a notable change in price like +15% in the last day or if a coin's price has fallen to a point where I'd like to buy it. I hope this helps you as much as it's helped me.
 
@@ -34,7 +36,7 @@ This program uses the free CoinMarketCap.com [api](https://coinmarketcap.com/api
   3. Press command + spacebar
     * Type `terminal` and press enter.
 
-  4. In terminal, type `cd ` (with a space after, so "cd "), go back to finder and drag the `install` folder into the terminal.
+  4. In the terminal, type `cd ` (with a space after, so "cd "), go back to finder and drag the `install` folder into the terminal.
 
   ![alt text](https://github.com/MellowYarker/CryptoNotifier/blob/master/images/finder_terminal.png "Finder and Terminal")
 
@@ -49,13 +51,13 @@ This program uses the free CoinMarketCap.com [api](https://coinmarketcap.com/api
 
 
 ### A Quick Example
-1. If coming from **set up** type `cd ../` in terminal then go to step 2
+1. If coming from **set up** type `cd ../` in the terminal then go to step 2
 * **OTHERWISE**
-1. Open terminal and navigate to the *CryptoNotifier-master* directory.
+1. Open a terminal and navigate to the *CryptoNotifier-master* directory.
 
 2. Type `python3 main.py`
 
-3. There should be notifications for bitcoin and litecoin (you can change these).
+3. There should be notifications for bitcoin and litecoin (you can change these below).
 
 
 
@@ -106,7 +108,7 @@ This program uses the free CoinMarketCap.com [api](https://coinmarketcap.com/api
 
    ![alt text](https://github.com/MellowYarker/CryptoNotifier/blob/master/images/exampleCoins.png "Coin Setup")
 
-3. Open terminal and navigate to the *CryptoNotifier-master* directory.
+3. Open a terminal and navigate to the *CryptoNotifier-master* directory.
   * `python3 main.py`
 
 That's it, just let it run in the background (**don't close the terminal**) and go on about your day.
