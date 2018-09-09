@@ -118,15 +118,14 @@ class Coin:
                    self.increase_alert == other.increase_alert and \
                    self.decrease_alert == other.decrease_alert
 
-    # TODO: refactor this method once individual increase/decrease options exist
     def change_notification(self):
         """
-        Determins whether an increase, decrease, or no change_alert should
+        Determins whether an increase, decrease, or no alert should
         be made.
 
         Returns:
-            1 if a price increased at least the change_alert amount
-            -1 if a price decreased at least the change_alert amount
+            1 if a price increased at least the increase_alert amount
+            -1 if a price decreased at least the decrease_alert amount
             0 otherwise.
 
         """

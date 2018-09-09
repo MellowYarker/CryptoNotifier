@@ -5,24 +5,30 @@ Parses settings/coins.txt
 from coin import Coin
 import pickle
 
-
-def rebuild():
+def run():
     """
+    If coins.txt or settings.txt have been modified, the new Coin objects will be used.
+    Otherwise, the previous Coin objects will be updated.
+
     Returns:
-        True if either settings/coins.txt has been modified or coinList.pickle
-            doesn't exist.
-        False otherwise.
+        None
 
     """
+    # TODO: read+write without opening file more than once.
     # build a list of Coin objects from the coins.txt file
     coins = create_coins("settings/coins.txt")
 
     try:
         with open("coinList.pickle", "rb") as p:
             p = pickle.load(p)
-        return coins != p
+
+        if coins != p:
+            with open('coinList.pickle', 'wb') as file:
+                pickle.dump(coins, file)
+
     except FileNotFoundError:
-        return True
+        with open('coinList.pickle', 'wb') as file:
+            pickle.dump(coins, file)
 
 
 def create_coins(file):
@@ -48,19 +54,6 @@ def create_coins(file):
                 raise ValueError("Please check settings/coins.txt to make sure"
                                  " the document is formatted correctly.")
     return coins
-
-
-def run():
-    """
-    Run this file. If coins.txt or settings.txt have been modified the new
-    Coin objects will be used, otherwise, previous Coin objects will be updated.
-
-    """
-    if rebuild():
-        coins = create_coins("settings/coins.txt")
-
-        with open('coinList.pickle', 'wb') as file:
-            pickle.dump(coins, file)
 
 
 if __name__ == "__main__":
