@@ -8,9 +8,6 @@
 
 ![alt text](https://github.com/MellowYarker/CryptoNotifier/blob/master/images/better.gif "Example GIF")
 
-## Note
-Thanks to this I've pretty much stopped looking at my portfolio on apps and websites (whereas before I checked multiple times an hour). This program isn't built to update you on the price of your holdings every 3 seconds, I like using it to let me know when there's been a notable change in price like +15% in the last day or if a coin's price has fallen to a point where I'd like to buy it. I hope this helps you as much as it's helped me.
-
 Here's a quick list of the types of notifications **currently supported**:
 
 * **Price percent change**: Be notified when the price increases x% or decreases y%
@@ -18,10 +15,6 @@ Here's a quick list of the types of notifications **currently supported**:
 * **Sell alert**: If the price of a coin costs $40 and you want to sell it at $40 or more, you get a notification.
 
 You can choose the fiat currency you'd like prices to be displayed in, how often you want to *scan* coinmarketcap.com, and the time frame between price changes. Ex: 24 hour change in price.
-
-*Coming soon*
-
-* **Volume alert**: If the volume is high enough for you to buy or sell a large quantity of coins then you get a notification.
 
 ![alt text](https://github.com/MellowYarker/CryptoNotifier/blob/master/images/grsExample.png "Example Notification")
 
