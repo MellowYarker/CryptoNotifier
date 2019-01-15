@@ -5,7 +5,7 @@ Parses the json and assigns data to Coin objects.
 from settings.settings import Settings
 
 # TODO: does this need to be in its own file?
-
+# TODO: more importantly, why didn't I just initialize settings once?
 
 def parse(coin, data):
     """
@@ -17,8 +17,8 @@ def parse(coin, data):
 
     Returns:
         None
-
     """
+
     settings = Settings()
     coin.set_price(float(data[0]['price_usd']))
     coin.set_btc_value(float(data[0]['price_btc']))

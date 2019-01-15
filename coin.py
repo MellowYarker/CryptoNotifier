@@ -99,7 +99,6 @@ class Coin:
         """
         return self.id == id
 
-    # TODO: See usage and determine if this is detailed enough *might need price
     def __eq__(self, other):
         """
         Compare two Coin objects.

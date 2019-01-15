@@ -29,7 +29,7 @@ class Scraper:
     def __init__(self, coins):
         self.coins = coins
         self.time = 0
-        self.link = "https://api.coinmarketcap.com/v1/ticker/"
+        self.link = "https://api.coinmarketcap.com/v1/ticker/" # Why is this a property? Lets make it a constant.
         self.http = urllib3.PoolManager(cert_reqs='CERT_REQUIRED',
                                         ca_certs=certifi.where())
         self.settings = Settings()
@@ -108,13 +108,13 @@ class Scraper:
                                  "on CoinMarketCap.com. Please remove it from "
                                  "coins.txt".format(name))
             else:
-                loc = 'Currencies/' + name
+                dest = 'Currencies/' + name
                 try:
-                    previous = self.__load(loc)
+                    previous = self.__load(dest)
                     updated = previous + result
-                    self.__dump(updated, loc)
+                    self.__dump(updated, dest)
                 except FileNotFoundError:
-                    self.__dump(result, loc)
+                    self.__dump(result, dest)
                 return result
 
         # error connecting to site

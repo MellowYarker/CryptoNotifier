@@ -19,9 +19,12 @@ def run():
     coins = create_coins("settings/coins.txt")
 
     try:
+	# coinList.pickle is where the serialized coins are.
         with open("coinList.pickle", "rb") as p:
             p = pickle.load(p)
 
+	# Coin objects have their own equivalence operator.
+	# See coin.py for implementation.
         if coins != p:
             with open('coinList.pickle', 'wb') as file:
                 pickle.dump(coins, file)
