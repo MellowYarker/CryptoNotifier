@@ -7,7 +7,7 @@ import json
 import pickle
 import certifi
 import os
-from settings.settings import Settings
+from settings.settings import UPDATE
 
 # TODO: save coin information in sqlite3
 # TODO: read JSON data, determine how long to hold data in a pickle file (and how to delete)
@@ -23,7 +23,6 @@ class Scraper:
         time (int): The time the scrape retrived the data. (not implemented)
         link (str): The coinmarketcap api link.
         http (obj): A urllib3 object.
-        settings (:obj: Settings): A Settings object that contains the settings.
     """
 
     def __init__(self, coins):
@@ -32,7 +31,6 @@ class Scraper:
         self.link = "https://api.coinmarketcap.com/v1/ticker/" # Why is this a property? Lets make it a constant.
         self.http = urllib3.PoolManager(cert_reqs='CERT_REQUIRED',
                                         ca_certs=certifi.where())
-        self.settings = Settings()
 
     # TODO: replace ValueError with a logger.
     def get_coin_with_id(self, id):
@@ -64,7 +62,8 @@ class Scraper:
             The number of minutes between the script updating the information.
 
         """
-        return self.settings.update
+        # global UPDATE const from settings
+        return UPDATE
 
     def print_coins(self):
         """
