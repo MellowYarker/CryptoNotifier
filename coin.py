@@ -5,7 +5,7 @@ A class that represents a cryptocurrency asset.
 
 # TODO: use properties if needed, getters/setters aren't pythonic.
 from currency_converter import CurrencyConverter
-from settings.settings import Settings
+from settings.settings import FIAT
 
 
 class Coin:
@@ -80,7 +80,7 @@ class Coin:
         """
         c = CurrencyConverter()
         try:
-            self.price = c.convert(value, 'USD', Settings().fiat)
+            self.price = c.convert(value, 'USD', FIAT)
         except ValueError:
             self.price = value
             # TODO ADD A LOGGER HERE THAT SAYS IT COULDN'T CONVERT TO THE
@@ -99,7 +99,6 @@ class Coin:
         """
         return self.id == id
 
-    # TODO: See usage and determine if this is detailed enough *might need price
     def __eq__(self, other):
         """
         Compare two Coin objects.

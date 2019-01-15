@@ -4,10 +4,11 @@ Parses settings/coins.txt
 """
 from coin import Coin
 import pickle
+from settings.settings import set_settings
 
 def run():
     """
-    If coins.txt or settings.txt have been modified, the new Coin objects will be used.
+    If coins.txt has been modified, the new Coin objects will be used.
     Otherwise, the previous Coin objects will be updated.
 
     Returns:
@@ -18,10 +19,16 @@ def run():
     # build a list of Coin objects from the coins.txt file
     coins = create_coins("settings/coins.txt")
 
+    # set the settings constants
+    set_settings()
+
     try:
+	# coinList.pickle is where the serialized coins are.
         with open("coinList.pickle", "rb") as p:
             p = pickle.load(p)
 
+	# Coin objects have their own equivalence operator.
+	# See coin.py for implementation.
         if coins != p:
             with open('coinList.pickle', 'wb') as file:
                 pickle.dump(coins, file)
